@@ -1,4 +1,4 @@
-use Grammar::Tracer;
+# use Grammar::Tracer;
 
 unit grammar Syslog::Grammar;
 
