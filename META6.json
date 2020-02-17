@@ -10,7 +10,9 @@
   "depends": [],
   "build-depends": [],
   "test-depends": [],
-  "provides": {},
+  "provides": {
+    "Syslog::Message::Grammar": "lib/Syslog/Message/Grammar.pm6"
+  },
   "resources": [],
   "license": "Artistic-2.0",
   "tags": [],
