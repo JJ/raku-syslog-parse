@@ -1,20 +1,18 @@
 {
-  "auth" : "cpan:JMERELO",
-  "authors" : [
+  "name": "raku::syslog::parse",
+  "description": "blah blah blah",
+  "version": "0.0.1",
+  "perl": "6.c",
+  "authors": [
     "JJ Merelo"
   ],
-  "build-depends" : [ ],
-  "depends" : [ ],
-  "description" : "blah blah blah",
-  "license" : "Artistic-2.0",
-  "name" : "raku::syslog::parse",
-  "perl" : "6.c",
-  "provides" : {
-    "raku::syslog::parse" : "lib/raku/syslog/parse.pm6"
-  },
-  "resources" : [ ],
-  "source-url" : "",
-  "tags" : [ ],
-  "test-depends" : [ ],
-  "version" : "0.0.1"
+  "auth": "cpan:JMERELO",
+  "depends": [],
+  "build-depends": [],
+  "test-depends": [],
+  "provides": {},
+  "resources": [],
+  "license": "Artistic-2.0",
+  "tags": [],
+  "source-url": ""
 }

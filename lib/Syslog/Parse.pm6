@@ -1,5 +1,6 @@
 use v6.c;
-unit class raku::syslog::parse:ver<0.0.1>:auth<cpan:JMERELO>;
+
+unit class Syslog::Parse:ver<0.0.1>:auth<cpan:JMERELO>;
 
 
 =begin pod
@@ -12,13 +13,13 @@ raku::syslog::parse - blah blah blah
 
 =begin code :lang<perl6>
 
-use raku::syslog::parse;
+use Syslog::Parse;
 
 =end code
 
 =head1 DESCRIPTION
 
-raku::syslog::parse is ...
+Syslog::Parse is ...
 
 =head1 AUTHOR
 

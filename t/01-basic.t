@@ -1,7 +1,7 @@
 use v6.c;
 use Test;
-use raku::syslog::parse;
+use Syslog::Grammar;
 
-pass "replace me";
+say Syslog::Grammar.parse( "19:48:13" );
 
 done-testing;
