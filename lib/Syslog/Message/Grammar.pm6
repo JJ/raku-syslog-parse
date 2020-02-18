@@ -1,3 +1,5 @@
-unit role Syslog::Message::Grammar;
+use Syslog::Who::Grammar;
 
-token user { "(" [\w"-"]+ ")" }
+unit role Syslog::Message::Grammar does Syslog::Who::Grammar;
+
+token user { "(" <who> "[" ")" }

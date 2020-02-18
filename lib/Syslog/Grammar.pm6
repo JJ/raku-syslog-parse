@@ -5,8 +5,7 @@ unit grammar Syslog::Grammar does Syslog::Who::Grammar;
 
 token TOP {
     <month> \s+ <day> \s+ <hour> \s+ <hostname> \s+
-    [ <who> "[" <pid> "]" | "kernel" ]
-    ":" \s+ <message>
+    <actor> ":" \s+ <message>
 }
 
 token month { [ "Jan"| "Feb" | "Mar" | "Apr" | "May" | "Jun"
@@ -14,5 +13,6 @@ token month { [ "Jan"| "Feb" | "Mar" | "Apr" | "May" | "Jun"
 token day { \d+ }
 token hour { [\d+] ** 3 % ":" }
 token hostname { \S+ }
+token actor { [ <who> "[" <pid> "]" | <who> ] }
 token pid { \d+ }
 token message { .+ }
