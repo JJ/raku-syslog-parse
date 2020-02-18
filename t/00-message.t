@@ -1,9 +1,14 @@
 use Test;
 
 use Syslog::Message::Grammar;
+use Syslog::Message::Action;
 
 grammar Gratest does Syslog::Message::Grammar {
     token TOP { <message> };
+}
+
+class GratestAction does Syslog::Message::Action {
+    method TOP($/) { make $<message>.made }
 }
 
 my @names = <root systemd-tmpfiles gnome-shell-calendar-server:5539>;
@@ -21,4 +26,5 @@ $message = "(CRON) INFO (Running @reboot jobs)";
 is Gratest.parse( $message )<message><user><who>, "CRON",
         "Message with someone";
 
+say Gratest.parse( $message, actions => GratestAction.new);
 done-testing;
