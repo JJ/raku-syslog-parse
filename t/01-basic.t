@@ -1,6 +1,7 @@
 use v6.c;
 use Test;
 use Syslog::Grammar;
+use Syslog::Grammar::Actions;
 
 my $match = Syslog::Grammar.parse:
         "Feb 17 19:40:01 penny CRON[20759]: (root) CMD (   test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond)" ;
@@ -17,7 +18,15 @@ $match = Syslog::Grammar.parse: 'Feb 18 07:22:10 penny systemd-tmpfiles[11979]: 
 
 like $match<actor><who>, /"systemd-tmpfiles"/, "appname with dash";
 
-$match = Syslog::Grammar.parse: "Feb 17 07:39:03 penny nm-dispatcher: req:5 'up' [virbr0-nic]: new request (1 scripts)";
+my $line = "Feb 17 07:39:03 penny nm-dispatcher: req:5 'up' [virbr0-nic]: new request (1 scripts)";
+
+$match = Syslog::Grammar.parse: $line;
 is $match<actor>, "nm-dispatcher", "Actor";
+
+my %entry =  Syslog::Grammar.parse( $line,
+        actions => Syslog::Grammar::Actions.new ).made;
+
+is %entry<hostname>, "penny", "Action entry";
+like %entry<message>, /"req:5"/, "Message entry";
 
 done-testing;
