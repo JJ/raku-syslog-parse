@@ -9,6 +9,6 @@ grammar Gratest does Syslog::Who::Grammar {
 }
 
 for @names -> $n {
-    say Gratest.parse( $n );
+    is Gratest.parse( $n )<who>, $n, "$n Name checks out";
 }
 done-testing;

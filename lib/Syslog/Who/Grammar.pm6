@@ -1,4 +1,4 @@
 unit role Syslog::Who::Grammar;
 
-token who { <[\w] + [.-]>+ }
+token who { <[\w] + [/.-]>+ }
 
