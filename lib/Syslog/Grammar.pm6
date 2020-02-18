@@ -1,7 +1,10 @@
 # use Grammar::Tracer;
 use Syslog::Who::Grammar;
+use Syslog::Message::Grammar;
 
-unit grammar Syslog::Grammar does Syslog::Who::Grammar;
+unit grammar Syslog::Grammar
+        does Syslog::Who::Grammar
+        does Syslog::Message::Grammar;
 
 token TOP {
     <month> \s+ <day> \s+ <hour> \s+ <hostname> \s+
@@ -15,4 +18,3 @@ token hour { [\d+] ** 3 % ":" }
 token hostname { \S+ }
 token actor { [ <who> "[" <pid> "]" | <who> ] }
 token pid { \d+ }
-token message { .+ }
