@@ -11,7 +11,9 @@
   "build-depends": [],
   "test-depends": [],
   "provides": {
+    "Syslog::Grammar::Actions": "lib/Syslog/Grammar/Actions.pm6",
     "Syslog::Message::Grammar": "lib/Syslog/Message/Grammar.pm6",
+    "Syslog::Who::Action": "lib/Syslog/Who/Action.pm6",
     "Syslog::Who::Grammar": "lib/Syslog/Who/Grammar.pm6"
   },
   "resources": [],
