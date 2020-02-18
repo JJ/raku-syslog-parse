@@ -1,4 +1,5 @@
 # use Grammar::Tracer;
+use Syslog::Who::Grammar;
 
 unit grammar Syslog::Grammar does Syslog::Who::Grammar;
 
