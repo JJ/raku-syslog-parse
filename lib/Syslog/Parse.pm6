@@ -1,13 +1,26 @@
 use v6.c;
 
+use Syslog::Grammar;
+use Syslog::Grammar::Actions;
+
 unit class Syslog::Parse:ver<0.0.1>:auth<cpan:JMERELO>;
 
 has $.path;
-has $.supply;
+has Supply $.supply;
+has Supply $.parsed;
 
 submethod BUILD ( :$!path = "/var/log/syslog") {
     $!supply = IO::Notification.watch-path( $!path );
+    $!parsed = supply {
+        $!supply.tap: -> $v {
+            emit Syslog::Grammar.parse(
+                    $v,
+                    actions => Syslog::Grammar::Actions.new
+                    );
+        }
+    }
 }
+
 
 =begin pod
 
