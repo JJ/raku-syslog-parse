@@ -33,4 +33,13 @@ my %parsed-message =
 
 is %parsed-message<user>, "CRON", "Actions tested";
 
+$message = " Supervising 7 threads of 5 processes of 1 users.";
+
+ok Gratest.parse($message)<message>, "Parsing message";
+
+%parsed-message = Gratest.parse( $message,
+        actions => GratestAction.new).made;
+
+like %parsed-message<message>, /^^" Supervising"/, "Non-user message";
+
 done-testing;
