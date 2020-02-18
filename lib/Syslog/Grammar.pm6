@@ -4,7 +4,7 @@ unit grammar Syslog::Grammar;
 
 token TOP {
     <month> \s+ <day> \s+ <hour> \s+ <hostname> \s+
-    [ <appname> "[" <pid> "]" | "kernel" ]
+    [ <who> "[" <pid> "]" | "kernel" ]
     ":" \s+ <message>
 }
 
@@ -13,6 +13,6 @@ token month { [ "Jan"| "Feb" | "Mar" | "Apr" | "May" | "Jun"
 token day { \d+ }
 token hour { [\d+] ** 3 % ":" }
 token hostname { \S+ }
-token appname { <[\w] + [.]>+ }
+token who { <[\w] + [.-]>+ }
 token pid { \d+ }
 token message { .+ }
