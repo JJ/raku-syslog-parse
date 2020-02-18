@@ -8,7 +8,9 @@ grammar Gratest does Syslog::Message::Grammar {
 }
 
 class GratestAction does Syslog::Message::Action {
-    method TOP($/) { make $<message>.made }
+    method TOP($/) {
+        make $<message>.made
+    }
 }
 
 my @names = <root systemd-tmpfiles gnome-shell-calendar-server:5539>;
@@ -26,5 +28,9 @@ $message = "(CRON) INFO (Running @reboot jobs)";
 is Gratest.parse( $message )<message><user><who>, "CRON",
         "Message with someone";
 
-say Gratest.parse( $message, actions => GratestAction.new);
+my %parsed-message =
+        Gratest.parse( $message, actions => GratestAction.new).made;
+
+is %parsed-message<user>, "CRON", "Actions tested";
+
 done-testing;
