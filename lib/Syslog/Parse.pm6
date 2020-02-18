@@ -2,6 +2,12 @@ use v6.c;
 
 unit class Syslog::Parse:ver<0.0.1>:auth<cpan:JMERELO>;
 
+has $.path;
+has $.supply;
+
+submethod BUILD ( :$!path = "/var/log/syslog") {
+    $!supply = IO::Notification.watch-path( $!path );
+}
 
 =begin pod
 
