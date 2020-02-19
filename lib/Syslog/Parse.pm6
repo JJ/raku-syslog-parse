@@ -12,22 +12,17 @@ has Supply $.parsed;
 submethod BUILD ( :$!path = "/var/log/syslog") {
     $!supply = IO::Notification.watch-path( $!path );
     $!parsed = supply {
-        $!supply.tap: -> $v {
+        whenever $!supply -> $v {
             state @all-lines;
             if $v.event == FileChanged {
                 my @these-lines = $!path.IO.slurp.lines;
                 if @these-lines.elems > @all-lines.elems {
                     for (@these-lines.elems - @all-lines.elems) … 1 -> $i {
-                        say @these-lines[*-$i];
-                        say Syslog::Grammar.parse(
+                        emit Syslog::Grammar.parse(
                                 @these-lines[*-$i],
                                 actions => Syslog::Grammar::Actions.new
                                 ).made;
-#                        emit Syslog::Grammar.parse(
-#                                @these-lines[*-$i],
-#                                actions => Syslog::Grammar::Actions.new
-#                                ).made;
-                        emit(33);
+
                         CATCH {
                             default {
                                 $*ERR.say: .message;
