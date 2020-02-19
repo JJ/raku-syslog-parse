@@ -27,6 +27,12 @@ submethod BUILD ( :$!path = "/var/log/syslog") {
 #                                @these-lines[*-$i],
 #                                actions => Syslog::Grammar::Actions.new
 #                                ).made;
+                        emit(33);
+                        CATCH {
+                            default {
+                                $*ERR.say: .message;
+                            }
+                        }
                     }
                     @all-lines = @these-lines;
                 }
