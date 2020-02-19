@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JJ/raku-syslog-parse.svg?branch=master)](https://travis-ci.org/JJ/raku-syslog-parse)
+[![Build Status](https://travis-ci.com/JJ/raku-syslog-parse.svg?branch=master)](https://travis-ci.com/JJ/raku-syslog-parse)
 
 NAME
 ====
