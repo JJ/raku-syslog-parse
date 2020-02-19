@@ -17,9 +17,11 @@ submethod BUILD ( :$!path = "/var/log/syslog") {
             if $v.event == FileChanged {
                 my @these-lines = $!path.IO.slurp.lines;
                 if @these-lines.elems > @all-lines.elems {
-                    for (@these-lines.elems - @all-lines.elems) … 1 -> $i {
+                    @all-lines = @these-lines;
+                    for (@these-lines.elems - @all-lines.elems) … 0 {
+                        my $line = @these-lines.pop;
                         emit Syslog::Grammar.parse(
-                                @these-lines[*-$i],
+                                $line,
                                 actions => Syslog::Grammar::Actions.new
                                 ).made;
 
@@ -29,7 +31,6 @@ submethod BUILD ( :$!path = "/var/log/syslog") {
                             }
                         }
                     }
-                    @all-lines = @these-lines;
                 }
             }
 
