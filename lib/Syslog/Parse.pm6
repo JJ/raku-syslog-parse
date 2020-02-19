@@ -43,7 +43,7 @@ submethod BUILD ( :$!path = "/var/log/syslog") {
 
 =head1 NAME
 
-raku::syslog::parse - blah blah blah
+raku::syslog::parse - Creates a supply out of syslog entries
 
 =head1 SYNOPSIS
 
@@ -51,11 +51,52 @@ raku::syslog::parse - blah blah blah
 
 use Syslog::Parse;
 
+use Syslog::Parse;
+
+my $parser = Syslog::Parse.new;
+
+$parser.parsed.tap: -> $v {
+    say $v;
+}
+
+sleep( @*ARGS[0] // 120 );
+
+=end code
+
+Or
+
+=begin code
+use Syslog::Parse;
+my $parser = Syslog::Parse.new;
+Promise.at(now+1).then: {
+    shell "logger logging $_" for ^10;
+};
+
+react {
+    whenever $parser.parsed -> %v {
+        say %v;
+        done(); # Just interested in the last one
+    }
+}
 =end code
 
 =head1 DESCRIPTION
 
-Syslog::Parse is ...
+Syslog::Parse is a parser that extracts information from every line in
+C</var/log/syslog>. Creates two objects of the kind C<Supply>: one (simply
+called C<.supply> that returns the raw lines, another, C<.parsed>, which
+returns a structure with the following keys:
+
+=for code :lang<text>
+day # Day in the month
+month # TLA of month
+hour # String with hour
+hostname # Hostname that produced it
+actor # Who produced the message log
+pid # Sometimes, it goes with a PID
+message # Another data structure, with key message (the whole message) and
+        # user if one has been dentified
+
 
 =head1 AUTHOR
 
