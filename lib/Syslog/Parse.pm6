@@ -12,8 +12,8 @@ has Supply $.parsed;
 submethod BUILD ( :$!path = "/var/log/syslog") {
     $!supply = IO::Notification.watch-path( $!path );
     $!parsed = supply {
+        my @all-lines;
         whenever $!supply -> $v {
-            state @all-lines;
             if $v.event == FileChanged {
                 my @these-lines = $!path.IO.slurp.lines;
                 if @these-lines.elems > @all-lines.elems {
@@ -48,8 +48,6 @@ raku::syslog::parse - Creates a supply out of syslog entries
 =head1 SYNOPSIS
 
 =begin code :lang<perl6>
-
-use Syslog::Parse;
 
 use Syslog::Parse;
 
