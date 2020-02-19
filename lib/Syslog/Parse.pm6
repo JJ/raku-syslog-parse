@@ -3,7 +3,7 @@ use v6.c;
 use Syslog::Grammar;
 use Syslog::Grammar::Actions;
 
-unit class Syslog::Parse:ver<0.0.1>:auth<cpan:JMERELO>;
+unit class Syslog::Parse:ver<0.0.2>:auth<cpan:JMERELO>;
 
 has $.path;
 has Supply $.supply;
