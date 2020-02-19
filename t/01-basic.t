@@ -34,5 +34,6 @@ like %entry<message>, /"req:5"/, "Message entry";
 
 ok %entry, "Empty message works";
 is %entry<message>, '', "No message";
+is %entry<actor>, "dhclient", "Actor";
 
 done-testing;
