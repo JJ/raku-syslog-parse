@@ -4,7 +4,7 @@
 NAME
 ====
 
-raku::syslog::parse - Creates a supply out of syslog entries
+Syslog::Parse - Creates a supply out of syslog entries
 
 SYNOPSIS
 ========
@@ -38,6 +38,12 @@ Or
         }
     }
 
+Also, you can run
+
+    watch-syslog.p6
+    
+which is going ot be installed with the distribution.
+
 DESCRIPTION
 ===========
 
@@ -53,6 +59,14 @@ pid # Sometimes, it goes with a PID
 message # Another data structure, with key message (the whole message) and
         # user if one has been dentified
 ```
+
+## PLATFORMS
+
+It works on platforms that use `/var/log/syslog` as a syslog file,
+with the same format. All Debian seem to be that way.
+
+If you don't have that platform, you can still use the grammars on
+files with that format.
 
 AUTHOR
 ======
