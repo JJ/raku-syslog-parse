@@ -1,24 +1,26 @@
 {
-  "name": "raku::syslog::parse",
-  "description": "blah blah blah",
-  "version": "0.0.1",
-  "perl": "6.c",
-  "authors": [
+  "auth" : "cpan:JMERELO",
+  "authors" : [
     "JJ Merelo"
   ],
-  "auth": "cpan:JMERELO",
-  "depends": [],
-  "build-depends": [],
-  "test-depends": [],
-  "provides": {
-    "Syslog::Grammar::Actions": "lib/Syslog/Grammar/Actions.pm6",
-    "Syslog::Message::Action": "lib/Syslog/Message/Action.pm6",
-    "Syslog::Message::Grammar": "lib/Syslog/Message/Grammar.pm6",
-    "Syslog::Who::Action": "lib/Syslog/Who/Action.pm6",
-    "Syslog::Who::Grammar": "lib/Syslog/Who/Grammar.pm6"
+  "build-depends" : [ ],
+  "depends" : [ ],
+  "description" : "Creates a supply out of syslog entries",
+  "license" : "Artistic-2.0",
+  "name" : "Syslog::Parse",
+  "perl" : "6.c",
+  "provides" : {
+    "Syslog::Grammar" : "lib/Syslog/Grammar.pm6",
+    "Syslog::Grammar::Actions" : "lib/Syslog/Grammar/Actions.pm6",
+    "Syslog::Message::Action" : "lib/Syslog/Message/Action.pm6",
+    "Syslog::Message::Grammar" : "lib/Syslog/Message/Grammar.pm6",
+    "Syslog::Parse" : "lib/Syslog/Parse.pm6",
+    "Syslog::Who::Action" : "lib/Syslog/Who/Action.pm6",
+    "Syslog::Who::Grammar" : "lib/Syslog/Who/Grammar.pm6"
   },
-  "resources": [],
-  "license": "Artistic-2.0",
-  "tags": [],
-  "source-url": ""
+  "resources" : [ ],
+  "source-url" : "https://github.com/JJ/raku-syslog-parse.git",
+  "tags" : [ ],
+  "test-depends" : [ ],
+  "version" : "0.0.1"
 }
