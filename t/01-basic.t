@@ -29,4 +29,10 @@ my %entry =  Syslog::Grammar.parse( $line,
 is %entry<hostname>, "penny", "Action entry";
 like %entry<message>, /"req:5"/, "Message entry";
 
+%entry =  Syslog::Grammar.parse( "Feb 19 09:17:30 penny dhclient[1456]: ",
+        actions => Syslog::Grammar::Actions.new ).made;
+
+ok %entry, "Empty message works";
+is %entry<message>, '', "No message";
+
 done-testing;
