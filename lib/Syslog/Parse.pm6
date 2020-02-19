@@ -51,8 +51,6 @@ raku::syslog::parse - Creates a supply out of syslog entries
 
 use Syslog::Parse;
 
-use Syslog::Parse;
-
 my $parser = Syslog::Parse.new;
 
 $parser.parsed.tap: -> $v {
