@@ -42,4 +42,6 @@ ok Gratest.parse($message)<message>, "Parsing message";
 
 like %parsed-message<message>, /^^" Supervising"/, "Non-user message";
 
+ok Gratest.parse("")<message>, "Parsing empty message";
+
 done-testing;
