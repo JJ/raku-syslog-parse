@@ -1,6 +1,11 @@
+2022-03-13  jmerelo  <jmerelo@princess-carolyn>
+
 Revision history for raku-syslog-parse
 
 {{$NEXT}}
+
+0.0.3  2022-03-13
+    - Simply refactoring for re-release
 
 0.0.2  2020-02-19T14:09:11+01:00
     - Some bug fixes and failures
