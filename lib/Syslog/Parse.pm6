@@ -5,11 +5,11 @@ use Syslog::Grammar::Actions;
 
 unit class Syslog::Parse:ver<0.0.2>:auth<cpan:JMERELO>;
 
-has $.path;
+has Str $.path;
 has Supply $.supply;
 has Supply $.parsed;
 
-submethod BUILD ( :$!path = "/var/log/syslog") {
+submethod BUILD ( Str :$!path = "/var/log/syslog") {
     $!supply = IO::Notification.watch-path( $!path );
     $!parsed = supply {
         my @all-lines;
