@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/JJ/raku-syslog-parse.svg?branch=master)](https://travis-ci.com/JJ/raku-syslog-parse)
 ![.github/workflows/test.yml](https://github.com/JJ/raku-syslog-parse/workflows/.github/workflows/test.yml/badge.svg)
 
 NAME
