@@ -23,30 +23,35 @@ sleep( @*ARGS[0] // 120 );
 Or
 
 ```raku
-    use Syslog::Parse;
-    my $parser = Syslog::Parse.new;
-    Promise.at(now+1).then: {
-        shell "logger logging $_" for ^10;
-    };
+use Syslog::Parse;
+my $parser = Syslog::Parse.new;
+Promise.at(now+1).then: {
+    shell "logger logging $_" for ^10;
+};
 
-    react {
-        whenever $parser.parsed -> %v {
-            say %v;
-            done(); # Just interested in the last one
-        }
+react {
+    whenever $parser.parsed -> %v {
+        say %v;
+        done(); # Just interested in the last one
     }
+}
 ```
 
 Also, you can run
 
-    watch-syslog.p6
-    
+```shell
+watch-syslog.p6
+```
+
 which is going ot be installed along with the distribution.
 
 DESCRIPTION
 ===========
 
-Syslog::Parse is a parser that extracts information from every line in `/var/log/syslog`. Creates two objects of the kind `Supply`: one (simply called `.supply` that returns the raw lines, another, `.parsed`, which returns a structure with the following keys:
+Syslog::Parse is a parser that extracts information from every line in 
+`/var/log/syslog`. Creates two objects of the kind `Supply`: one (simply 
+called `.supply`) that returns the raw lines, another, `.parsed`, which 
+returns a structure with the following keys:
 
 ```text
 day # Day in the month
@@ -56,7 +61,7 @@ hostname # Hostname that produced it
 actor # Who produced the message log
 pid # Sometimes, it goes with a PID
 message # Another data structure, with key message (the whole message) and
-        # user if one has been dentified
+        # user if one has been identified
 ```
 
 ## PLATFORMS
