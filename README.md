@@ -22,6 +22,7 @@ sleep( @*ARGS[0] // 120 );
 
 Or
 
+```raku
     use Syslog::Parse;
     my $parser = Syslog::Parse.new;
     Promise.at(now+1).then: {
@@ -34,6 +35,7 @@ Or
             done(); # Just interested in the last one
         }
     }
+```
 
 Also, you can run
 
