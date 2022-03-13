@@ -3,7 +3,7 @@ use v6.c;
 use Syslog::Grammar;
 use Syslog::Grammar::Actions;
 
-unit class Syslog::Parse:ver<0.0.2>:auth<cpan:JMERELO>;
+unit class Syslog::Parse:ver<0.0.3>:auth<zef:jjmerelo>;
 
 has Str $.path;
 has Supply $.supply;
@@ -93,7 +93,7 @@ hostname # Hostname that produced it
 actor # Who produced the message log
 pid # Sometimes, it goes with a PID
 message # Another data structure, with key message (the whole message) and
-        # user if one has been dentified
+        # user if one has been identified
 
 
 =head1 AUTHOR
