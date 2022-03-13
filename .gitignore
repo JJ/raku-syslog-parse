@@ -1,3 +1,4 @@
 .precomp/
 /raku-syslog-parse-*
 *~
+.idea/

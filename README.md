@@ -12,8 +12,6 @@ SYNOPSIS
 ```perl6
 use Syslog::Parse;
 
-use Syslog::Parse;
-
 my $parser = Syslog::Parse.new;
 
 $parser.parsed.tap: -> $v {
@@ -42,7 +40,7 @@ Also, you can run
 
     watch-syslog.p6
     
-which is going ot be installed with the distribution.
+which is going ot be installed along with the distribution.
 
 DESCRIPTION
 ===========
